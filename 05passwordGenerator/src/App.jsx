@@ -11,34 +11,42 @@ function App() {
 
 
   const passwordGenerator = useCallback(() => {
-    let pass = ""
-    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-
+    let pass = "";
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  
+    // Include numbers if allowed
     if (numberAllowed) str += "0123456789";
+  
+    // Include special characters if allowed
     if (characterAllowed) str += "!@#$%^&*()_+[]{}|;:,.<>?/`~";
-
+  
+    // Generate the password
     for (let i = 0; i < length; i++) {
-      let char = Math.floor(Math.random() * str.length + 1)
-      // console.log(char)
-
-      pass += str.charAt(char)// like if value of char is 58 then str.charAt(char)= "k"
+      // Get a random index from the string
+      let charIndex = Math.floor(Math.random() * str.length);
+  
+      // Append the character at that index to the password
+      pass += str.charAt(charIndex);
     }
-    setPassword(pass)
-
-
-  }, [length, numberAllowed, setPassword]) //here setPaaword use for optimization
-
-  // passwordGenerator()//it will not work as we use callback function
+  
+    // Update the state with the generated password
+    setPassword(pass);
+  }, [length, numberAllowed, characterAllowed, setPassword]);
+  
+  // passwordGenerator();?
 
   useEffect(() => {
     passwordGenerator()
-  }, [length, numberAllowed, characterAllowed, setPassword])
+  }, [length, numberAllowed, passwordGenerator])//any change happen in this array/dependencies then run it again 
 
-  const copyPasswordToClipboard = useCallback(()=>{
-    passwordRef.current?.select();
-    passwordRef.current?.setSelectionRange(0,8)
+  const copyPasswordToClipboard = useCallback(() => {
+    window.navigator.clipboard.writeText(password);
+    // for makingg background blue when password copy
+    passwordRef.current?.select();  // for makingg background blue when password copy
+    
+    //for setting range of copied
+    // passwordRef.current?.setSelectionRange(0, 10);
 
-    window.navigator.clipboard.writeText(password)
   }, [password])
 
 
