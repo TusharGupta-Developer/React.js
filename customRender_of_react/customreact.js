@@ -1,4 +1,3 @@
-
 function customReact(reactElelment, contaioner) {
     /*
     const domElement = document.createElement(reactElelment.type);
@@ -26,7 +25,7 @@ function customReact(reactElelment, contaioner) {
 const reactElelment = {
     type: 'a',
     props: {
-        href: 'https:/google.com',
+        href: 'https://google.com',
         target: '_blank'
     },
     children: 'Click me to visit google'
