@@ -1,6 +1,7 @@
 # Why React Uses Virtual DOM, Reconciliation, and Fiber
 
-## Note:  ### The Virtual DOM and reconciliation are built together in React. The Virtual DOM serves as a mechanism to represent the UI in memory, and reconciliation is the process that React uses to efficiently update the actual DOM based on changes in the Virtual DOM. This integration allows React to provide a declarative UI and ensures that updates are managed efficiently, improving performance and user experience.
+## Note:  
+### The Virtual DOM and reconciliation are built together in React. The Virtual DOM serves as a mechanism to represent the UI in memory, and reconciliation is the process that React uses to efficiently update the actual DOM based on changes in the Virtual DOM. This integration allows React to provide a declarative UI and ensures that updates are managed efficiently, improving performance and user experience.
 
 ## Virtual DOM in React
 
@@ -16,7 +17,7 @@ Reconciliation is the process React uses to determine how to efficiently update 
 
 Fiber is the reconciliation algorithm introduced in React 16 to improve the way React manages updates to the user interface. It breaks rendering work into smaller units called "fibers," allowing React to pause and resume work as needed. This enables React to prioritize updates, manage complex component trees more efficiently, and ensure that the UI remains responsive, especially during heavy updates.
 
-## For a Better Understanding of Reconciliation and Fiber with Example
+## The Best Way to Understand Reconciliation and Fiber is Through Practical Examples:
 
 ```javascript 
 import React, { useState } from 'react';
@@ -42,34 +43,6 @@ function App() {
 }
 
 export default App; 
-```
-
-## React Fiber Example
-
-```javascript
-import React, { useState } from 'react';
-
-function App() {
-  const [items, setItems] = useState(["Item 1", "Item 2", "Item 3"]);
-
-  const addItem = () => {
-    setItems([...items, `Item ${items.length + 1}`]);
-  };
-
-  return (
-    <div>
-      <h1>Item List</h1>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-      <button onClick={addItem}>Add Item</button>
-    </div>
-  );
-}
-
-export default App;
 ```
 
 ## React Fiber Example
